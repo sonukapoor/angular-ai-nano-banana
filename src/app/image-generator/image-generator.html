@@ -1,0 +1,84 @@
+<section class="section">
+  <h1 class="text-center">Angular AI Image Generator</h1>
+  <div class="text-center muted subtitle">Using Google Nano Banana (No backend)</div>
+
+  <div class="card">
+    <input
+      type="text"
+      class="prompt-input"
+      [value]="prompt()"
+      (input)="prompt.set($event.target.value)"
+      placeholder="Describe what you want to see..."
+      autocomplete="off"
+      required
+      autofocus
+    />
+    <div
+      class="upload-area flex flex-col items-center justify-center border-2 border-dashed border-blue-400 rounded-xl bg-gray-800/70 py-8 px-4 mb-6 cursor-pointer transition hover:border-blue-500 hover:bg-blue-950/40"
+      [class.dragging]="isDragging()"
+      (drop)="onDrop($event)"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+    >
+      <input type="file" accept="image/*" (change)="onFileSelected($event)" hidden #fileInput />
+      <div (click)="fileInput.click()">
+        @if(!selectedFile()) {
+        <span class="muted">Drag & drop an image here, or <b class="brand">choose a file</b></span>
+        } @else {
+        <span
+          >Selected: <b>{{ selectedFile()?.name }}</b></span
+        >
+        }
+      </div>
+    </div>
+    <div class="flex justify-between">
+      <div class="flex gap-4">
+        <div>
+          @if(filePreview()) {
+          <div class="result">
+            <span class="muted text-xs">Uploaded Image:</span>
+            <img
+              class="mt-2 rounded shadow border border-gray-700 preview"
+              alt="Preview"
+              [src]="filePreview()"
+            />
+          </div>
+          }
+        </div>
+        <div>
+          @if(imageUrl()) {
+          <div class="result">
+            <span class="muted text-xs">Generated Image:</span>
+            <img
+              [src]="imageUrl()"
+              alt="Generated image"
+              class="mt-2 rounded shadow border border-gray-700 preview"
+            />
+          </div>
+          }
+        </div>
+      </div>
+      <div>
+        <button
+          class="btn max-w-xs"
+          (click)="generateImage()"
+          [disabled]="!selectedFile() || error() || loading()"
+        >
+          {{ loading() ? 'Generating...' : 'Generate Image' }}
+        </button>
+      </div>
+    </div>
+
+    @if(error()) {
+    <div class="error">{{ error() }}</div>
+    }
+  </div>
+  @if(loading()) {
+  <div class="dot-loader-fixed">
+    <span class="mute">Model</span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+  }
+</section>
