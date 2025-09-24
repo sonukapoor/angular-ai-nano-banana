@@ -1,59 +1,48 @@
-# AngularAiNanoBanana
+# Angular AI Nano Banana 🍌
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.1.
+A modern, minimal Angular app for generating images using Google Gemini AI. Built with the latest Angular features (standalone components, signals).
 
-## Development server
+## Features
 
-To start a local development server, run:
+- **AI Image Generation**: Instantly create images from your ideas and uploads using Google Gemini AI.
+- **Modern Angular**: Uses standalone components, signals, and best practices for a fast, reactive UI.
+- **Drag & Drop Upload**: Effortlessly upload images by dragging or selecting files.
+- **Live Preview**: See a preview of your uploaded image before generating.
+- **Loading Indicator**: Animated 3-dot loader shows progress while your image is being generated.
+- **Responsive & Accessible**: Looks great on all devices, with accessible color contrast and keyboard navigation.
+- **Minimal, Customizable Styles**: Global styles are clean, minimal, and easy to adapt to your brand.
 
-```bash
-ng serve
-```
+## Getting Started
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
+2. **Set your Google Gemini API key**
+   - Add your API key to `src/environments/environment.ts` as `API_KEY`.
+3. **Run the app**
+   ```bash
+   npm start
+   ```
+4. **Open in your browser**
+   - Visit [http://localhost:4200](http://localhost:4200)
 
-## Code scaffolding
+## Project Structure
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- `src/app/image-generator/` — Main image generator component (UI, logic, styles)
+- `src/styles.scss` — Minimal global styles for the app
+- `src/environments/` — API key configuration
 
-```bash
-ng generate component component-name
-```
+## Customization
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Update the color palette or layout in `styles.scss` to match your brand.
+- Extend the image generator with more AI models, prompt options, or output formats.
 
-```bash
-ng generate --help
-```
+## Credits
 
-## Building
+- Built by [Sonu Kapoor](https://sonukapoor.com/) — Google Developer Expert (Angular), Microsoft MVP, and open-source leader.
+- Powered by [Google Gemini AI](https://ai.google.dev/)
 
-To build the project run:
+## License
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+MIT
